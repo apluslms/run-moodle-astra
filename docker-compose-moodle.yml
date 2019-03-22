@@ -1,0 +1,54 @@
+version: "3"
+
+volumes:
+  moodledb:
+  moodledata:
+  graderdata:
+services:
+  moodle:
+    image: apluslms/run-moodle-astra:1.6
+    depends_on:
+      - db
+      - grader
+      - mailhog
+    environment:
+      MOODLE_DOCKER_DBTYPE: pgsql
+      MOODLE_DOCKER_DBNAME: moodle
+      MOODLE_DOCKER_DBUSER: moodle
+      MOODLE_DOCKER_DBPASS: "m@0dl3ing"
+      MOODLE_DOCKER_BROWSER: firefox
+      # Moodle host is set in config.php due to necessary workarounds.
+      #MOODLE_DOCKER_WEB_HOST: "${MOODLE_DOCKER_WEB_HOST}"
+      #MOODLE_DOCKER_WEB_PORT: "${MOODLE_DOCKER_WEB_PORT}"
+      # public IP address of the host machine for remote debugging
+      #XDEBUG_CONFIG: remote_host=xxx.xxx.xxx.xxx
+    ports:
+      - "${MOODLE_DOCKER_WEB_PORT}:80"
+    volumes:
+      - moodledata:/var/www/moodledata
+      # mount the Moodle source code for testing a development version
+      # (plugins must be then also mounted if they are not included in the Moodle source code)
+      #- /path/to/moodle:/var/www/html:ro
+      # mount the source code of Moodle plugins for testing development versions
+      #- /path/to/moodle-mod_astra/astra:/var/www/html/mod/astra:ro
+      #- /path/to/moodle-block_astra_setup/astra_setup:/var/www/html/blocks/astra_setup:ro
+  db:
+    image: postgres:9.6.12
+    environment:
+      POSTGRES_USER: moodle
+      POSTGRES_PASSWORD: "m@0dl3ing"
+      POSTGRES_DB: moodle
+    volumes:
+      - moodledb:/var/lib/postgresql/data
+  mailhog:
+    image: mailhog/mailhog
+  grader:
+    image: apluslms/run-mooc-grader:1.4
+    volumes:
+      - graderdata:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/aplus:/tmp/aplus
+      - .:/srv/courses/default:ro
+    ports:
+      - "8080:8080"
+

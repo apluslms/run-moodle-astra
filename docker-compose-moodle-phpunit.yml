@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  moodle:
+    # Run PHPUnit tests in the Moodle container instead of starting the web server normally.
+    command: sh -c 'php admin/tool/phpunit/cli/init.php && vendor/bin/phpunit --group mod_astra'
+

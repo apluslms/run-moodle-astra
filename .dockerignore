@@ -1,0 +1,4 @@
+README*
+docker-compose-moodle.yml
+docker-compose-moodle-phpunit.yml
+docker-moodle-up.sh
