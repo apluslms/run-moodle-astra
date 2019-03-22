@@ -17,7 +17,9 @@ from Moodle HQ.
 Copy `docker-moodle-up.sh` and `docker-compose-moodle.yml` into the MOOC grader
 course directory (such as the [template course](https://github.com/apluslms/course-templates)).
 The container is then started with `docker-moodle-up.sh`. The compose file
-mounts the course directory into the MOOC grader.
+mounts the course directory into the MOOC grader. Open `http://localhost:8050/`
+in your web browser to access Moodle. The MOOC grader runs at
+`http://localhost:8080/`.
 
 When the container is started for the first time, Moodle installs
 the database tables, which can take a couple of minutes of time.
