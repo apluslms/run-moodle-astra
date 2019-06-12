@@ -7,12 +7,12 @@ COPY assets/moodle_add_test_data.php /usr/local/src/moodle_add_test_data.php
 
 WORKDIR /var/www/html
 
-ARG MOODLE_VER=3.5.6
-ARG MOODLE_MAJOR_VER=3.5
+ARG MOODLE_VER=3.6.4
+ARG MOODLE_MAJOR_VER=3.6
 # branch refers to the download URL, not git version control
-ARG MOODLE_BRANCH=stable35
+ARG MOODLE_BRANCH=stable36
 
-ARG ASTRA_VER=1.7
+ARG ASTRA_VER=1.8.1
 # the setup block plugin
 ARG ASTRA_BLOCK_VER=1.3
 
