@@ -7,14 +7,14 @@ COPY assets/moodle_add_test_data.php /usr/local/src/moodle_add_test_data.php
 
 WORKDIR /var/www/html
 
-ARG MOODLE_VER=3.4.8
-ARG MOODLE_MAJOR_VER=3.4
+ARG MOODLE_VER=3.5.6
+ARG MOODLE_MAJOR_VER=3.5
 # branch refers to the download URL, not git version control
-ARG MOODLE_BRANCH=stable34
+ARG MOODLE_BRANCH=stable35
 
-ARG ASTRA_VER=1.6.4
+ARG ASTRA_VER=1.7
 # the setup block plugin
-ARG ASTRA_BLOCK_VER=1.2
+ARG ASTRA_BLOCK_VER=1.3
 
 # xdebug for debugging PHP
 RUN pecl install xdebug-2.7.0 \
