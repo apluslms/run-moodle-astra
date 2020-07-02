@@ -1,4 +1,4 @@
-FROM moodlehq/moodle-php-apache:7.0
+FROM moodlehq/moodle-php-apache:7.1-buster
 
 COPY assets/web/ /etc/apache2/conf-enabled/
 COPY assets/custom_php.ini ${PHP_INI_DIR}/conf.d/
@@ -7,17 +7,17 @@ COPY assets/moodle_add_test_data.php /usr/local/src/moodle_add_test_data.php
 
 WORKDIR /var/www/html
 
-ARG MOODLE_VER=3.6.7
-ARG MOODLE_MAJOR_VER=3.6
+ARG MOODLE_VER=3.8.3
+ARG MOODLE_MAJOR_VER=3.8
 # branch refers to the download URL, not git version control
-ARG MOODLE_BRANCH=stable36
+ARG MOODLE_BRANCH=stable38
 
-ARG ASTRA_VER=1.8.2
+ARG ASTRA_VER=1.9
 # the setup block plugin
 ARG ASTRA_BLOCK_VER=1.3
 
 # xdebug for debugging PHP
-RUN pecl install xdebug-2.7.0 \
+RUN pecl install xdebug-2.9.6 \
   && docker-php-ext-enable xdebug \
   && echo "xdebug.remote_enable=on"     >> /usr/local/etc/php/conf.d/xdebug.ini \
   && echo "xdebug.idekey=xdebug"        >> /usr/local/etc/php/conf.d/xdebug.ini \
