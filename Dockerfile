@@ -1,4 +1,4 @@
-FROM moodlehq/moodle-php-apache:7.1-buster
+FROM moodlehq/moodle-php-apache:7.3-buster
 
 COPY assets/web/ /etc/apache2/conf-enabled/
 COPY assets/custom_php.ini ${PHP_INI_DIR}/conf.d/
@@ -7,12 +7,12 @@ COPY assets/moodle_add_test_data.php /usr/local/src/moodle_add_test_data.php
 
 WORKDIR /var/www/html
 
-ARG MOODLE_VER=3.8.3
-ARG MOODLE_MAJOR_VER=3.8
+ARG MOODLE_VER=3.9.3
+ARG MOODLE_MAJOR_VER=3.9
 # branch refers to the download URL, not git version control
-ARG MOODLE_BRANCH=stable38
+ARG MOODLE_BRANCH=stable39
 
-ARG ASTRA_VER=1.9
+ARG ASTRA_VER=1.10.1
 # the setup block plugin
 ARG ASTRA_BLOCK_VER=1.3
 
@@ -36,14 +36,14 @@ RUN pecl install xdebug-2.9.6 \
   && chown -R www-data:www-data /var/www/moodledata/lang \
   && rm -f /tmp/sv.zip /tmp/fi.zip \
   # download Astra plugin (astra directory into the moodle/mod directory)
-  && curl -LO https://github.com/Aalto-LeTech/moodle-mod_astra/archive/v${ASTRA_VER}.tar.gz \
+  && curl -LO https://github.com/apluslms/moodle-mod_astra/archive/v${ASTRA_VER}.tar.gz \
   && tar -xzf v${ASTRA_VER}.tar.gz --directory=/var/www/html/mod \
     --strip-components=1 moodle-mod_astra-${ASTRA_VER}/astra \
   && chown -R www-data:www-data /var/www/html/mod/astra \
   && rm -f /tmp/v${ASTRA_VER}.tar.gz \
   && rm -f /var/www/html/mod/astra/local_settings.php \
   # download the Astra setup block plugin (astra_setup directory into the moodle/blocks directory)
-  && curl -LO https://github.com/Aalto-LeTech/moodle-block_astra_setup/archive/v${ASTRA_BLOCK_VER}.tar.gz \
+  && curl -LO https://github.com/apluslms/moodle-block_astra_setup/archive/v${ASTRA_BLOCK_VER}.tar.gz \
   && tar -xzf v${ASTRA_BLOCK_VER}.tar.gz --directory=/var/www/html/blocks \
     --strip-components=1 moodle-block_astra_setup-${ASTRA_BLOCK_VER}/astra_setup \
   && chown -R www-data:www-data /var/www/html/blocks/astra_setup \
