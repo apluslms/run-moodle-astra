@@ -6,7 +6,7 @@ volumes:
   graderdata:
 services:
   moodle:
-    image: apluslms/run-moodle-astra:1.10
+    image: apluslms/run-moodle-astra:1.11
     depends_on:
       - db
       - grader
@@ -43,7 +43,7 @@ services:
   mailhog:
     image: mailhog/mailhog
   grader:
-    image: apluslms/run-mooc-grader:1.8
+    image: apluslms/run-mooc-grader:1.11
     volumes:
       - graderdata:/data
       - /var/run/docker.sock:/var/run/docker.sock
