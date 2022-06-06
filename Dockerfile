@@ -1,4 +1,4 @@
-FROM moodlehq/moodle-php-apache:7.3-buster
+FROM moodlehq/moodle-php-apache:7.4-bullseye
 
 COPY assets/web/ /etc/apache2/conf-enabled/
 COPY assets/custom_php.ini ${PHP_INI_DIR}/conf.d/
@@ -7,10 +7,10 @@ COPY assets/moodle_add_test_data.php /usr/local/src/moodle_add_test_data.php
 
 WORKDIR /var/www/html
 
-ARG MOODLE_VER=3.10.6
-ARG MOODLE_MAJOR_VER=3.10
+ARG MOODLE_VER=3.11.7
+ARG MOODLE_MAJOR_VER=3.11
 # branch refers to the download URL, not git version control
-ARG MOODLE_BRANCH=stable310
+ARG MOODLE_BRANCH=stable311
 
 ARG ASTRA_VER=1.11.0
 # the setup block plugin
