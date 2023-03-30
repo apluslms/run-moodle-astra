@@ -23,7 +23,7 @@ services:
       # public IP address of the host machine for remote debugging
       #XDEBUG_CONFIG: remote_host=xxx.xxx.xxx.xxx
     ports:
-      - "${MOODLE_DOCKER_WEB_PORT}:80"
+      - "${MOODLE_DOCKER_WEB_PORT}:8050"
     volumes:
       - moodledata:/var/www/moodledata
       # mount the Moodle source code for testing a development version

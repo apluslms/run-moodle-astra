@@ -1,6 +1,8 @@
 FROM moodlehq/moodle-php-apache:7.4-bullseye
 
-COPY assets/web/ /etc/apache2/conf-enabled/
+COPY assets/apache2/conf-enabled/ /etc/apache2/conf-enabled/
+COPY assets/apache2/sites-enabled/ /etc/apache2/sites-enabled/
+COPY assets/apache2/ports.conf /etc/apache2/ports.conf
 COPY assets/custom_php.ini ${PHP_INI_DIR}/conf.d/
 COPY assets/moodle_init_db.sh /usr/local/bin/moodle_init_db.sh
 COPY assets/moodle_add_test_data.php /usr/local/src/moodle_add_test_data.php
