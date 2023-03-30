@@ -7,7 +7,7 @@
 sleep 5 # wait for the database to start
 cd /var/www/html
 php admin/cli/install_database.php --agree-license --fullname='Moodle container' --shortname='moodle' \
-  --adminuser='admin' --adminpass='admin' --adminemail='admin@domain.local'
+  --adminuser='admin' --adminpass='admin' --adminemail='admin@localhost.invalid'
 
 # Add test data to the database, i.e., a coursespace and test user accounts.
 # This also imports the MOOC grader course into the coursespace.

@@ -6,7 +6,7 @@ volumes:
   graderdata:
 services:
   moodle:
-    image: apluslms/run-moodle-astra:1.11
+    image: apluslms/run-moodle-astra:1.11-3.11
     depends_on:
       - db
       - grader
