@@ -132,7 +132,7 @@ vVpKGeLRPgtlV1qhw8hYk28E9mc/tkVQq44d439OM1qniUw1WGwg4uI+J56lCami\r
 $lticonfig->lti_initiatelogin = 'http://plus:8000/lti/login/';
 $lticonfig->lti_redirectionuris = "http://plus:8000/lti/login/\r
 http://plus:8000/lti/launch/";
-$lticonfig->lti_launchcontainer = LTI_LAUNCH_CONTAINER_WINDOW;
+$lticonfig->lti_launchcontainer = LTI_LAUNCH_CONTAINER_EMBED_NO_BLOCKS; //LTI_LAUNCH_CONTAINER_WINDOW;
 $lticonfig->lti_sendname = 1; // always
 $lticonfig->lti_sendemailaddr = 1;
 $lticonfig->lti_acceptgrades = 2; // Delegate to teacher
